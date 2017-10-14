@@ -8,5 +8,7 @@ def getWebsite(reviewURL) #method with input as the website
 
   page = Nokogiri::HTML(open(reviewURL, "User-Agent" => "Whatever you want here")) #makes object
   page.css("div.review_body").text
+
 end
+
 puts getWebsite("http://www.metacritic.com/music/yeezus/kanye-west")
