@@ -72,4 +72,5 @@ words = r.stringSplit(words)
 types = r.getWordTypeArr(words)
 
 output = r.stripNonAdjectives(words,types)
-puts output
+
+output = r.calcFrequency(output)
