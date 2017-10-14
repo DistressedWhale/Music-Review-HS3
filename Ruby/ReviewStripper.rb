@@ -5,13 +5,13 @@ class ReviewStripper
     #<---------------------Code by Sam Whale--------------------------------------------->
     include DictionaryLookup
     def getWordType(word)
-      begin
-        DictionaryLookup::Base.define(word).first.part_of_speech #gets type of word
-      rescue #error handling
-        return 'invalid' #invalid is useful for debugging, and will be converted to a noun later
-      else
-        return DictionaryLookup::Base.define(word).first.part_of_speech  
-      end
+        begin
+            DictionaryLookup::Base.define(word).first.part_of_speech #gets type of word
+        rescue #error handling
+            return 'invalid' #invalid is useful for debugging, and will be converted to a noun later
+        else
+            return DictionaryLookup::Base.define(word).first.part_of_speech  
+        end
     end
 
     #<---------------------Code by Alex Hughes Davies------------------------------------>
@@ -52,30 +52,27 @@ class ReviewStripper
         return outputList
     end
 
-    #counts frequency
-=begin   def method_Frequency
-        list = method_Sort
-        frequency = [[]]
-        list.each_index do |i|
-            frequency_word = []
-            list.each_index do |i + 1|
-                if list[i] == list[i + 1]
-                    k+=1
-                else
-                    frequency_word = [list[i], k]
-                    k = 0
-                end
-                frequency[i] = frequency_word
-            end
-            return frequency
+    #counts frequency, returns word followed by the frequency in an array (overall array is 2d)
+    def method_Frequency(a) #v2 by Sam Whale
+        frequency = [[]] #2d array for the output
+        wordsAlreadyPicked = [] #array of the words already counted
+        counter = 0
+
+        a.each_index do |x| #for each word
+            if ([a[x]] & (wordsAlreadyPicked)).empty? #If a[x] has not already been picked
+                counter = a.count(a[x])
+                frequency << [a[x],counter] #pack up the word and the counter 
+                wordsAlreadyPicked << a[x]
+            end 
         end
+        return frequency
     end
-=end
-    def method_Weight(method_frequency)
+
+    def method_Weight(a)
         weight = [[]]
-        outputList = method_Frequency
+        outputList = a
         outputList.each_index do |i|
-            weight_2 = outputList_[2]**(-1)
+            weight_2 = outputList_[2]**(-1) #reciprocal
             weight[i] = [[outputList[i], weight_2]]
         end
         return weight
@@ -84,8 +81,9 @@ end
 #<------------------------------main-------------------------------------------------->
 
 w = ['z','f','e','d','c']
-t = ["adjective","null","null","null","adjective"]
+t = ["Hello","Hello","Hello","How","How","Are","Are","You"]
 s = "Alex"
 
 r = ReviewStripper.new
-puts r.getWordType("Adjective")
+out = r.method_Frequency(t)
+puts out
