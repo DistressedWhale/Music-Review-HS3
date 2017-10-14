@@ -1,0 +1,23 @@
+Stories:
+
+1) Select Adjectives from 1 review
+	* Dictionary API
+	* Prevent the same adjective being counted more than once per review. 
+
+2) Display Adjectives as a list in terms of frequency.
+
+3) Select the Adjectives from multiple reviews, using APIs (e.g. iTunes/Metacritic/Amazon Music Stream API).
+
+4) Weighting System (Algorithms to discriminate against super common words e.g. 'Nice'. 
+
+5) Design the UI. GUI Searchbar + display list of adjectives. More advanced features include Word Clouds and tick boxes to choose how many words, and whether displayed as search bar or as a basic list. 
+
+6) Improve adjective selector by:
+	* ignoring all words within quotations " " (intends to avoid frequently quoted song lyrics from the album.)
+	* If we have time we can look at words outside of adjectives using Googles Sentiment analysis tool. We can use this to:
+		* use verbs and nouns that express opinion (e.g. Love and Hate). 
+		* Identifies the opinion of each word (e.g. good/bad/can't tell) and colour the words green, red and white. 
+
+7) Increase the number of reviews we aggregate by using additional APIs. 
+
+
