@@ -8,7 +8,3 @@ wordArray = []  #this array is to contain each of the words from the sentence (o
 wordArray = sentence.split(/\W+/)
 puts wordArray[0] #returns the first word.
 end
-
-#Code below demonstrates the function working, for instance, on a kanye review.
-kanyeWest_Yeezus_Review = "absolute masterpiece, beautiful and at times very raw."
-puts stringSplit(kanyeWest_Yeezus_Review)
