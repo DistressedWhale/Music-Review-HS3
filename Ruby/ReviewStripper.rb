@@ -29,12 +29,6 @@ class ReviewStripper
     #Words - The original words (After Stringsplit)
     #Types - A corresponding array of the types of the words in the 'Words' Array (noun, adjective etc)
     #Finds the adjectives, strips out other types to Null
-    def method_WordTypes(types) #Strips out the non-adjective words, leaving only "null" and "Adjective"
-        types.each_index do |i|
-            types[i] = 'null' if types[i] != 'adjective'
-        end
-        return types #Originally was "return y"
-    end
 
     #Puts the adjectives from Words in an array
     def method_List(words,types)
