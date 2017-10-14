@@ -84,3 +84,5 @@ s = "Alex"
 r = ReviewStripper.new
 out = r.method_Frequency(t)
 puts out
+out = calcWeight(out)
+puts out
