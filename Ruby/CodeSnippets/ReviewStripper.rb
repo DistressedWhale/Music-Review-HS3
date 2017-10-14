@@ -1,3 +1,7 @@
+#  
+# THIS CODE HAS BEEN INTEGRATED INTO CODESTRIPPER.RB
+#
+
 require 'PearsonLongman-Dictionary' #Main dictionary Gem
 
 class ReviewStripper
