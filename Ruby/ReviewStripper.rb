@@ -15,6 +15,14 @@ class ReviewStripper
         end
     end
 
+    def getWordTypeArr(a)
+        out = []
+        a.each_index do |x|
+          out << getWordType(a[x])
+        end
+        return out
+    end
+
     #<---------------------Code by Alex Hughes Davies------------------------------------>
 
     #String splitter. E.g. takes sentence and cuts the words out into an Array.
@@ -31,18 +39,12 @@ class ReviewStripper
     #Finds the adjectives, strips out other types to Null
 
     #Puts the adjectives from Words in an array
-    def method_List(words,types)
+    def stripNonAdjectives(words,types)
         outputList = []
         # method_WordTypes(types)
         types.each_index do |i|
             outputList << words[i] if types[i] == 'adjective'
         end
-        return outputList
-    end
-
-    #orders list alphabetically
-    def sortAlpha(a)
-        outputList = a.sort_alphabetical
         return outputList
     end
 
@@ -54,29 +56,20 @@ class ReviewStripper
         a.each_index do |x| #for each word
             if ([a[x]] & (wordsAlreadyPicked)).empty? #If a[x] has not already been picked
                 counter = a.count(a[x])
-                frequency << [a[x],counter] #pack up the word and the counter 
+                frequency << [a[x],(counter)**(-1)] #pack up the word and the counter. **-1 does the weighting.
                 wordsAlreadyPicked << a[x]
             end 
         end
         return frequency
     end
-
-
-    def calcWeight(a)
-        a.each_index do |x|
-            a[x][1] = a[x][1]**(-1) #reciprocal
-        end
-        return weight
-    end
 end
 #<------------------------------main-------------------------------------------------->
-
-w = ['z','f','e','d','c']
-t = ["Hello","Hello","Hello","How","How","Are","Are","You"]
-s = "Alex"
-
 r = ReviewStripper.new
-out = r.method_Frequency(t)
-puts out
-out = calcWeight(out)
-puts out
+words = 'Songs this lush dont necessarily demand lyrical complexity. In fact, the pop songs that stick often work with simple premises expanded to monumental dimensions by heady production.' #This is what makes, for example, Carly Rae Jepsens songs so satisfying and memorable—they hone in on a single feeling, a stable concept that gives you something to hang onto when its soundtrack surges through the roof.'
+
+words = r.stringSplit(words)
+
+types = r.getWordTypeArr(words)
+
+output = r.stripNonAdjectives(words,types)
+puts output
