@@ -1,7 +1,6 @@
 #  
 # THIS CODE HAS BEEN INTEGRATED INTO CODESTRIPPER.RB
 #
-
 require 'sort_alphabetical'
   
   @Words = ['Hello', 'go', 'great', 'fabulous']
