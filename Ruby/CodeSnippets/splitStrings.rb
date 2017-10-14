@@ -1,3 +1,6 @@
+#  
+# THIS CODE HAS BEEN INTEGRATED INTO CODESTRIPPER.RB
+#
 #String splitter. E.g. takes sentence and cuts the words out into an Array.
 #Sentence is a String argument.
 def stringSplit(sentence)
