@@ -5,7 +5,13 @@ class ReviewStripper
     #<---------------------Code by Sam Whale--------------------------------------------->
     include DictionaryLookup
     def getWordType(word)
-        return DictionaryLookup::Base.define(word).first.part_of_speech #gets type of word
+      begin
+        DictionaryLookup::Base.define(word).first.part_of_speech #gets type of word
+      rescue #error handling
+        return 'invalid' #invalid is useful for debugging, and will be converted to a noun later
+      else
+        return DictionaryLookup::Base.define(word).first.part_of_speech  
+      end
     end
 
     #<---------------------Code by Alex Hughes Davies------------------------------------>
@@ -79,5 +85,7 @@ end
 
 w = ['z','f','e','d','c']
 t = ["adjective","null","null","null","adjective"]
+s = "Alex"
+
 r = ReviewStripper.new
-puts r.method_List(w,t)
+puts r.getWordType("Adjective")
