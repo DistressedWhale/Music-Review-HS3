@@ -5,14 +5,15 @@ require 'sort_alphabetical'
 class ReviewStripper
     #<---------------------Code by Sam Whale--------------------------------------------->
     include DictionaryLookup
-    def getWordType(word,adj)
-      s = False  
-      
-        if (adj.bsearch{|x| x >= word}) != 0
-          s = True      
-        end
-        
-    return s
+    def getWordType(word)
+            begin
+                DictionaryLookup::Base.define(word).first.part_of_speech #gets type of word
+            rescue #error handling
+                return 'invalid' #invalid is useful for debugging, and will be converted to a noun later anyway
+            else
+                puts("Got word: " + word) #debug statement
+                return DictionaryLookup::Base.define(word).first.part_of_speech
+            end
     end
     
     def getWordTypeArr(a)
@@ -21,8 +22,7 @@ class ReviewStripper
         target = a.length
         whitelist = []
         blacklist = []
-        adj = File.readlines("adjectives.txt")
-        
+
         a.each_index do |x|
             #try to find word in blacklist or whitelist
             if whitelist.include?(a[x])
@@ -31,7 +31,8 @@ class ReviewStripper
                 out << ' '
             else
                 #otherwise look it up
-                if getWordType(a[x],adj) == True
+                current = getWordType(a[x])
+                if current == "adjective"
                     whitelist << a[x] #add to whitelist
                     out << current
                 else
