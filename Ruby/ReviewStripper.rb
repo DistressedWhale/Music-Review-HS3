@@ -40,7 +40,6 @@ class ReviewStripper
                     blacklist << a[x] #add to blacklist
                     out << ''
                 end
-                #out << getWordType(a[x])
             end
         end     
     return out
