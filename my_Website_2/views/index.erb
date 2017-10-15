@@ -41,7 +41,7 @@
           <% if @testArray %>
             <% @testArray.each do |x| %>
 
-            {text: "<%= x[0] %>", weight: <%= x[1] %>},
+                {text: "<%= x[0] %>", weight: "<%= x[1] %>"},
 
             <% end %>
           <% end %>

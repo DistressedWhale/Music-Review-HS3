@@ -29,7 +29,7 @@ class ReviewStripper
             if whitelist.include?(a[x])
                 out << 'adjective'
             elsif blacklist.include?(a[x])
-                out << ''
+                out << ' '
             else
                 #otherwise look it up
                 current = getWordType(a[x])
