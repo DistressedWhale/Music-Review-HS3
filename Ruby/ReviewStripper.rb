@@ -16,43 +16,31 @@ class ReviewStripper
                 return DictionaryLookup::Base.define(word).first.part_of_speech  
             end
         end
-        end
-
-        def getWordTypeArr(a)
-            out = []
-            blacklist = []
-            whitelist = []
-            a.each_index do |x|
-                #try to find word in blacklist or whitelist
-                if whitelist.include?(a[x])
-                    out << a[x]  
-                elsif blacklist.include?(a[x])
-                    puts "blacklist triggered"
-                else
-                    #otherwise look it up
-                    current = getWordType(a[x])
-                    if current == "adjective"
-                        whitelist << a[x] #add to whitelist
-                        out << a[x]
-                    else
-                        blacklist << a[x] #add to blacklist
-                    end
-                    #out << getWordType(a[x])
-                end
-            end
-
-        end
-        File.open("blacklist.txt", "w+") do |f|
-            f.puts(blacklist)
-        end
-        File.close
-
-        File.open("whitelist.txt", "w+") do |f|
-            f.puts(whitelist)
-        end
-        File.close
-        return out
     end
+    def getWordTypeArr(a)
+        out = []
+        blacklist = []
+        whitelist = []
+        a.each_index do |x|
+            #try to find word in blacklist or whitelist
+            if whitelist.include?(a[x])
+                out << a[x]  
+            elsif blacklist.include?(a[x])
+                puts "blacklist triggered"
+            else
+                #otherwise look it up
+                current = getWordType(a[x])
+                if current == "adjective"
+                    whitelist << a[x] #add to whitelist
+                    out << a[x]
+                else
+                    blacklist << a[x] #add to blacklist
+                end
+                #out << getWordType(a[x])
+            end
+        end
+    return out
+end
 
     #<---------------------Code by Alex Hughes Davies------------------------------------>
 
