@@ -27,7 +27,7 @@ class ReviewStripper
             #try to find word in blacklist or whitelist
             if whitelist.include?(a[x])
                 out << 'adjective'
-            elsif (blacklist.include?(a[x])) || (word.length > 3) then
+            elsif (blacklist.include?(a[x])) or (a[x].length < 4) then
                 out << ' '
             else
                 #otherwise look it up
