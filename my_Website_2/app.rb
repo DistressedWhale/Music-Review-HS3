@@ -15,6 +15,8 @@ mainMethod = Main.new #creates main object
       print "#{params[:albumArtist]}"
       getUserInput(params[:albumArtist])
       mainMethod.startMain(params[:albumArtist])
+      
+      erb :index
     end
 
 #
