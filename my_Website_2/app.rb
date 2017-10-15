@@ -14,9 +14,9 @@ mainMethod = Main.new #creates main object
     post '/' do
       print "#{params[:albumArtist]}"
       getUserInput(params[:albumArtist])
-      mainMethod.startMain(params[:albumArtist])
-      
-      erb :index
+      resultArray = mainMethod.startMain(params[:albumArtist])
+      $cloudOne[0] = ["Hello", 14]
+      #erb :index
     end
 
 #
@@ -25,6 +25,6 @@ def getUserInput (input) #the users input is stored as variable $textInHTML
   erb :index
 end
 
-def putIntoCloud(arrayName) #
-$cloudOne[] = arrayName[] #essentially makes it so the array of adjectives can be used in the HTML
-end
+#def putIntoCloud(arrayName) #
+ #essentially makes it so the array of adjectives can be used in the HTML
+#end
