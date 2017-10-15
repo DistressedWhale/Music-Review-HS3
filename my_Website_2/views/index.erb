@@ -5,7 +5,7 @@
     <!-- <script src="https://raw.githubusercontent.com/mistic100/jQCloud/master/dist/jqcloud.min.js"></script>
     <link rel="stylesheet" href="../views/jqcloud.min.css"> -->
 
-    <title>MusiK Kläud</title>
+    <title>Music Cloud</title>
     <meta charset="UTF-8">
 
 <script type="application/javascript">
@@ -28,6 +28,11 @@
             margin: auto;
             width: 70%
           }
+          #searchBox {
+            margin-top: 30px;
+          }
+
+
     </style>
 
     <script type="application/javascript">
@@ -48,16 +53,17 @@ $('#myCloud').jQCloud(words);
   </head>
   <body>
     <h1>Welcome to my Music Cloud</h1>
-    <p>Made by Sam, Alex, Alex <%=$textInHTML%></p>
+    <p>Made by Sam, Alex, Alex <br /> <i>searching:</i> <b><%=$textInHTML%></b></p>
 
-      <div>
+
+    <div id="searchBox">
           <form action="/" method="post">
             <input type="text" name="albumArtist">
             <input type="submit">
           </form>
-      </div>
-      <div id="myCloud" style="width: 300px; height: 300px;">
-      </div>
+    </div>
+    <div id="myCloud" style="width: 300px; height: 300px;">
+    </div>
   </body>
 
 </html>
