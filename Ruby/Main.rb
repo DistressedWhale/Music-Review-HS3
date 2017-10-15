@@ -6,11 +6,11 @@ class Main
   
  # puts "Type in the metacritic URL of the page you want"
   reviewURL = "http://www.metacritic.com/music/yeezus/kanye-west"
-  puts "scraped"
+  puts "Scraping successful"
   words = m.getWebsite(reviewURL)
   words = rs.stringSplit(words)
+  
   types = rs.getWordTypeArr(words)
   output = rs.stripNonAdjectives(words,types)
   output = rs.calcFrequency(output)
-
 end

@@ -19,26 +19,30 @@ class ReviewStripper
     end
     def getWordTypeArr(a)
         out = []
-        blacklist = []
+        counter = 0
+        target = a.length
         whitelist = []
+        blacklist = []
+        
         a.each_index do |x|
             #try to find word in blacklist or whitelist
             if whitelist.include?(a[x])
-                out << a[x]  
+                out << 'adjective' 
             elsif blacklist.include?(a[x])
-                puts "blacklist triggered"
+                out << ''
             else
                 #otherwise look it up
                 current = getWordType(a[x])
                 if current == "adjective"
                     whitelist << a[x] #add to whitelist
-                    out << a[x]
+                    out << current
                 else
                     blacklist << a[x] #add to blacklist
+                    out << ''
                 end
                 #out << getWordType(a[x])
             end
-        end
+        end     
     return out
 end
 
