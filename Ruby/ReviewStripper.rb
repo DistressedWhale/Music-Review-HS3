@@ -66,11 +66,7 @@ end
 #<------------------------------main-------------------------------------------------->
 r = ReviewStripper.new
 words = 'Songs this lush dont necessarily demand lyrical complexity. In fact, the pop songs that stick often work with simple premises expanded to monumental dimensions by heady production.' #This is what makes, for example, Carly Rae Jepsens songs so satisfying and memorable—they hone in on a single feeling, a stable concept that gives you something to hang onto when its soundtrack surges through the roof.'
-
 words = r.stringSplit(words)
-
 types = r.getWordTypeArr(words)
-
 output = r.stripNonAdjectives(words,types)
-
 output = r.calcFrequency(output)
