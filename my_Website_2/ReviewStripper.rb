@@ -6,7 +6,6 @@ class ReviewStripper
     #<---------------------Code by Sam Whale--------------------------------------------->
     include DictionaryLookup
     def getWordType(word)
-        if word.length > 3 then
             begin
                 DictionaryLookup::Base.define(word).first.part_of_speech #gets type of word
             rescue #error handling
@@ -15,8 +14,8 @@ class ReviewStripper
                 puts("got word: " + word)
                 return DictionaryLookup::Base.define(word).first.part_of_speech
             end
-        end
     end
+    
     def getWordTypeArr(a)
         out = []
         counter = 0
@@ -28,7 +27,7 @@ class ReviewStripper
             #try to find word in blacklist or whitelist
             if whitelist.include?(a[x])
                 out << 'adjective'
-            elsif blacklist.include?(a[x])
+            elsif (blacklist.include?(a[x])) || (word.length > 3) then
                 out << ' '
             else
                 #otherwise look it up
