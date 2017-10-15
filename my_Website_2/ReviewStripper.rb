@@ -11,7 +11,7 @@ class ReviewStripper
             rescue #error handling
                 return 'invalid' #invalid is useful for debugging, and will be converted to a noun later anyway
             else
-                puts("got word: " + word)
+                puts("Got word: " + word) #debug statement
                 return DictionaryLookup::Base.define(word).first.part_of_speech
             end
     end
@@ -66,6 +66,7 @@ end
         types.each_index do |i|
             outputList << words[i] if types[i] == 'adjective'
         end
+        
         return outputList
     end
 
@@ -77,7 +78,7 @@ end
         a.each_index do |x| #for each word
             if ([a[x]] & (wordsAlreadyPicked)).empty? #If a[x] has not already been picked
                 counter = a.count(a[x])
-                frequency << [a[x],(counter)] #pack up the word and the counter. **-1 does the weighting.
+                frequency << [a[x],14] #pack up the word and the counter. **-1 does the weighting.
                 wordsAlreadyPicked << a[x]
             end
         end
