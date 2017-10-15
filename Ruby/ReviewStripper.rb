@@ -6,20 +6,51 @@ class ReviewStripper
     #<---------------------Code by Sam Whale--------------------------------------------->
     include DictionaryLookup
     def getWordType(word)
-        begin
-            DictionaryLookup::Base.define(word).first.part_of_speech #gets type of word
-        rescue #error handling
-            return 'invalid' #invalid is useful for debugging, and will be converted to a noun later anyway
-        else
-            return DictionaryLookup::Base.define(word).first.part_of_speech  
+        if word.length > 3 then  
+            begin
+                DictionaryLookup::Base.define(word).first.part_of_speech #gets type of word
+            rescue #error handling
+                return 'invalid' #invalid is useful for debugging, and will be converted to a noun later anyway
+            else
+                puts("got word: " + word)
+                return DictionaryLookup::Base.define(word).first.part_of_speech  
+            end
         end
-    end
+        end
 
-    def getWordTypeArr(a)
-        out = []
-        a.each_index do |x|
-          out << getWordType(a[x])
+        def getWordTypeArr(a)
+            out = []
+            blacklist = []
+            whitelist = []
+            a.each_index do |x|
+                #try to find word in blacklist or whitelist
+                if whitelist.include?(a[x])
+                    out << a[x]  
+                elsif blacklist.include?(a[x])
+                    puts "blacklist triggered"
+                else
+                    #otherwise look it up
+                    current = getWordType(a[x])
+                    if current == "adjective"
+                        whitelist << a[x] #add to whitelist
+                        out << a[x]
+                    else
+                        blacklist << a[x] #add to blacklist
+                    end
+                    #out << getWordType(a[x])
+                end
+            end
+
         end
+        File.open("blacklist.txt", "w+") do |f|
+            f.puts(blacklist)
+        end
+        File.close
+
+        File.open("whitelist.txt", "w+") do |f|
+            f.puts(whitelist)
+        end
+        File.close
         return out
     end
 
@@ -63,10 +94,3 @@ class ReviewStripper
         return frequency
     end
 end
-#<------------------------------main-------------------------------------------------->
-r = ReviewStripper.new
-words = 'Songs this lush dont necessarily demand lyrical complexity. In fact, the pop songs that stick often work with simple premises expanded to monumental dimensions by heady production.' #This is what makes, for example, Carly Rae Jepsens songs so satisfying and memorable—they hone in on a single feeling, a stable concept that gives you something to hang onto when its soundtrack surges through the roof.'
-words = r.stringSplit(words)
-types = r.getWordTypeArr(words)
-output = r.stripNonAdjectives(words,types)
-output = r.calcFrequency(output)
