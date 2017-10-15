@@ -4,7 +4,7 @@
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <!-- <script src="https://raw.githubusercontent.com/mistic100/jQCloud/master/dist/jqcloud.min.js"></script>
     <link rel="stylesheet" href="../views/jqcloud.min.css"> -->
-	  <link rel="stylesheet" type="text/css" href="style.css">
+	  <!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
 
     <title>Music Cloud</title>
     <meta charset="UTF-8">
@@ -39,13 +39,17 @@
     });
     </script>
   </head>
-  <body>
-	<div class="container">
-		<h1>Music Cloud</h1>
-		<p id="credits"; >Made by Sam, Alex & Alex <br /> <i>searching:</i> <b><%=@textInHTML%></b></p>
+  <body style="background-image: url('Sky.png'); font-family: 'Open Sans', sans-serif;"> 
+	<div class="container" style="margin:0 auto; margin-top: 60px; max-width: 680px; width: 100%;">
+		<h1 style="text-align: center;" >Music Cloud</h1>
+		<p id="credits" style="text-align: center;" >Made by Sam, Alex & Alex <br /> <i>searching:</i> <b><%=@textInHTML%></b></p>
 
 
-		<div id="searchBox">
+		<div id="searchBox" style="display: inline-block;
+	left: 50%;
+	margin-left: -125px;
+	margin-top: 60px;
+	position: absolute;">
 		  <form action="/" method="post">
 			<input type="text" name="albumArtist" id="box">
 			<input type="submit" id="submit">
