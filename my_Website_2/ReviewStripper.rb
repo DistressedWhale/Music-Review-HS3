@@ -6,14 +6,14 @@ class ReviewStripper
     #<---------------------Code by Sam Whale--------------------------------------------->
     include DictionaryLookup
     def getWordType(word)
-        if word.length > 3 then  
+        if word.length > 3 then
             begin
                 DictionaryLookup::Base.define(word).first.part_of_speech #gets type of word
             rescue #error handling
                 return 'invalid' #invalid is useful for debugging, and will be converted to a noun later anyway
             else
                 puts("got word: " + word)
-                return DictionaryLookup::Base.define(word).first.part_of_speech  
+                return DictionaryLookup::Base.define(word).first.part_of_speech
             end
         end
     end
@@ -23,11 +23,11 @@ class ReviewStripper
         target = a.length
         whitelist = []
         blacklist = []
-        
+
         a.each_index do |x|
             #try to find word in blacklist or whitelist
             if whitelist.include?(a[x])
-                out << 'adjective' 
+                out << 'adjective'
             elsif blacklist.include?(a[x])
                 out << ''
             else
@@ -41,7 +41,7 @@ class ReviewStripper
                     out << ''
                 end
             end
-        end     
+        end
     return out
 end
 
@@ -78,9 +78,9 @@ end
         a.each_index do |x| #for each word
             if ([a[x]] & (wordsAlreadyPicked)).empty? #If a[x] has not already been picked
                 counter = a.count(a[x])
-                frequency << [a[x],(counter)**(-1)] #pack up the word and the counter. **-1 does the weighting.
+                frequency << [a[x],(counter)] #pack up the word and the counter. **-1 does the weighting.
                 wordsAlreadyPicked << a[x]
-            end 
+            end
         end
         return frequency
     end

@@ -10,6 +10,5 @@ class Main
     types = rs.getWordTypeArr(words)
     output = rs.stripNonAdjectives(words,types)
     output = rs.calcFrequency(output)
-    return output
   end
 end

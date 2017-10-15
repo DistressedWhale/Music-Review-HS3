@@ -1,8 +1,7 @@
 require 'rubygems'
 require 'sinatra'
 require_relative './Main.rb'
-$textInHTML = "" #initialises the user input String (either URL or album/artist)
-$cloudOne = [] #initialises the array
+@textInHTML = "" #initialises the user input String (either URL or album/artist)
 
 mainMethod = Main.new #creates main object
 
@@ -14,9 +13,11 @@ mainMethod = Main.new #creates main object
     post '/' do
       print "#{params[:albumArtist]}"
       getUserInput(params[:albumArtist])
-      resultArray = mainMethod.startMain(params[:albumArtist])
-      $cloudOne[0] = ["Hello", 14]
-      #erb :index
+      @testArray = mainMethod.startMain(params[:albumArtist])
+
+      # @testArray = [["World", 5], ["Test", 1], ["Hello", 3]]
+
+      erb :index
     end
 
 #
@@ -25,6 +26,6 @@ def getUserInput (input) #the users input is stored as variable $textInHTML
   erb :index
 end
 
-#def putIntoCloud(arrayName) #
- #essentially makes it so the array of adjectives can be used in the HTML
-#end
+def putIntoCloud(arrayName) #
+$cloudOne[] = arrayName[] #essentially makes it so the array of adjectives can be used in the HTML
+end
