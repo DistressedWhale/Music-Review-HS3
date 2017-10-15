@@ -13,7 +13,8 @@ mainMethod = Main.new #creates main object
     post '/' do
       print "#{params[:albumArtist]}"
       getUserInput(params[:albumArtist])
-      @testArray = mainMethod.startMain(params[:albumArtist])
+      @testArray = mainMethod.startMain(params[:albumArtist]).sort {|a,b| a[1] > b[1]}
+      #.sort puts the most frequent words into the first elements so they get included in the cloud.
 
       #@testArray = [["World", 5], ["Test", 1], ["Hello", 3]]
 

@@ -39,10 +39,14 @@
     jQuery(document).ready(function($) {
       var words = [
           <% if @testArray %>
+          <% counter = 1 %>
             <% @testArray.each do |x| %>
-
                 {text: "<%= x[0] %>", weight: "<%= x[1] %>"},
+                <% counter = counter + 1 %>
 
+                <% if counter >= 10 %>
+                  <% break %>
+                <% end %>
             <% end %>
           <% end %>
         ];
