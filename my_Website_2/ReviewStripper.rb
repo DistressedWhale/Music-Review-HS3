@@ -37,7 +37,7 @@ class ReviewStripper
                     out << current
                 else
                     blacklist << a[x] #add to blacklist
-                    out << ''
+                    out << ' '
                 end
             end
         end
