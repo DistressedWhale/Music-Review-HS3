@@ -1,0 +1,30 @@
+body{
+	background-image: url("Sky.png");
+	font-family: 'Open Sans', sans-serif;
+}
+
+.container {
+	margin: 0 auto;
+	margin-top: 60px;
+	max-width: 680px;
+	width: 100%;
+}
+
+h1{
+	font-style: Helvetica;
+	text-align: center;
+}
+
+#searchBox {
+	display: inline-block;
+	left: 50%;
+	margin-left: -125px;
+	margin-top: 60px;
+	position: absolute;
+}
+
+#credits{
+	/* margin-bottom:0;
+	margin-left:0; */
+	text-align:center;
+}
