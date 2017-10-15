@@ -4,10 +4,11 @@
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <!-- <script src="https://raw.githubusercontent.com/mistic100/jQCloud/master/dist/jqcloud.min.js"></script>
     <link rel="stylesheet" href="../views/jqcloud.min.css"> -->
+	  <link rel="stylesheet" type="text/css" href="style.css">
 
     <title>Music Cloud</title>
     <meta charset="UTF-8">
-
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"> 
 <script type="application/javascript">
 /*!
  * jQCloud 2.0.3
@@ -20,33 +21,16 @@
 </script>
 <style>
 .jqcloud{font:10px Helvetica,Arial,sans-serif;line-height:normal;overflow:hidden;position:relative}.jqcloud-word{margin:0;padding:0}.jqcloud-word.w1{color:#aab5f0;font-size:100%}.jqcloud-word.w2{color:#9ce;font-size:150%}.jqcloud-word.w3{color:#a0ddff;font-size:200%}.jqcloud-word.w4{color:#90c5f0;font-size:250%}.jqcloud-word.w5{color:#90a0dd;font-size:300%}.jqcloud-word.w6{color:#90c5f0;font-size:350%}.jqcloud-word.w7{color:#39d;font-size:400%}.jqcloud-word.w8{color:#0cf;font-size:450%}.jqcloud-word.w9{color:#0cf;font-size:500%}.jqcloud-word.w10{color:#0cf;font-size:550%}.jqcloud-word a{color:inherit;font-size:inherit;text-decoration:none}.jqcloud-word a:hover{color:#0cf}
-    </style>
-
-
-    <style>
-          * {
-            margin: auto;
-            width: 70%
-          }
-          #searchBox {
-            margin-top: 30px;
-          }
-
-
-    </style>
+</style>
 
     <script type="application/javascript">
     jQuery(document).ready(function($) {
       var words = [
           <% if @testArray %>
-          <% counter = 1 %>
             <% @testArray.each do |x| %>
-                {text: "<%= x[0] %>", weight: "<%= x[1] %>"},
-                <% counter = counter + 1 %>
 
-                <% if counter >= 10 %>
-                  <% break %>
-                <% end %>
+                {text: "<%= x[0] %>", weight: "<%= x[1] %>"},
+
             <% end %>
           <% end %>
         ];
@@ -56,18 +40,21 @@
     </script>
   </head>
   <body>
-    <h1>Welcome to my Music Cloud</h1>
-    <p>Made by Sam, Alex, Alex <br /> <i>searching:</i> <b><%=@textInHTML%></b></p>
+	<div class="container">
+		<h1>Music Cloud</h1>
+		<p id="credits"; >Made by Sam, Alex & Alex <br /> <i>searching:</i> <b><%=@textInHTML%></b></p>
 
 
-    <div id="searchBox">
-          <form action="/" method="post">
-            <input type="text" name="albumArtist">
-            <input type="submit">
-          </form>
-    </div>
-    <div id="myCloud" style="width: 300px; height: 300px;">
-    </div>
+		<div id="searchBox">
+		  <form action="/" method="post">
+			<input type="text" name="albumArtist" id="box">
+			<input type="submit" id="submit">
+		  </form>
+		</div>
+		<div id="myCloud" style="width: 300px; height: 300px;">
+		</div>
+		
+	</div>
   </body>
 
 </html>
